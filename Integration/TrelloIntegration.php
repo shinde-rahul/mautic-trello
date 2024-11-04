@@ -34,12 +34,4 @@ class TrelloIntegration extends BasicIntegration implements BasicInterface
     {
         return 'plugins/MauticTrelloBundle/Assets/img/trello.png';
     }
-
-    /**
-     * Check if plugin is published.
-     */
-//    public function isPublished(): bool
-//    {
-//        return $this->getIntegrationSettings()->getIsPublished();
-//    }
 }
