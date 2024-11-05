@@ -26,51 +26,6 @@ return [
         'favorite_board' => '',
     ],
     'services' => [
-//        'forms' => [
-//            'mautic.trello.form.card' => [
-//                'class'     => 'MauticPlugin\MauticTrelloBundle\Form\NewCardType',
-//                'arguments' => [
-//                    'mautic.trello.service.trello_api',
-//                    'monolog.logger.mautic',
-//                ],
-//            ],
-//            'mautic.trello.form.config' => [
-//                'class'     => 'MauticPlugin\MauticTrelloBundle\Form\ConfigType',
-//                'arguments' => [
-//                    'mautic.lead.model.field',
-//                    'mautic.trello.service.trello_api',
-//                    'monolog.logger.mautic',
-//                ],
-//            ],
-//        ],
-//        'events' => [
-//            'mautic.channel.button.subscriber.trello' => [
-//                'class'     => \MauticPlugin\MauticTrelloBundle\Event\ButtonSubscriber::class,
-//                'arguments' => [
-//                    'router',
-//                    'translator',
-//                    'request_stack',
-//                    'mautic.helper.integration',
-//                ],
-//            ],
-//            'mautic.trello.event.config' => [
-//                'class'     => \MauticPlugin\MauticTrelloBundle\Event\ConfigSubscriber::class,
-//                'arguments' => [
-//                    'mautic.helper.integration',
-//                    'monolog.logger.mautic',
-//                ],
-//            ],
-//        ],
-//        'others' => [
-//            'mautic.trello.service.trello_api' => [
-//                'class'     => \MauticPlugin\MauticTrelloBundle\Service\TrelloApiService::class,
-//                'arguments' => [
-//                    'mautic.helper.integration',
-//                    'mautic.helper.core_parameters',
-//                    'monolog.logger.mautic',
-//                ],
-//            ],
-//        ],
         'integrations' => [
             // Basic definitions with name, display name and icon
             'mautic.integration.trello'               => [

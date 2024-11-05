@@ -12,9 +12,8 @@
 namespace MauticPlugin\MauticTrelloBundle\Form;
 
 use Mautic\LeadBundle\Model\FieldModel;
-use MauticPlugin\MauticTrelloBundle\Openapi\lib\ApiException;
 use MauticPlugin\MauticTrelloBundle\Service\TrelloApiService;
-use Monolog\Logger;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -25,25 +24,13 @@ use Symfony\Component\Form\FormBuilderInterface;
 class ConfigType extends AbstractType
 {
     /**
-     * @var TrelloApiService
-     */
-    private $apiService;
-
-    protected $fieldModel;
-
-    /**
-     * @var Logger
-     */
-    protected $logger;
-
-    /**
      * ConfigType constructor.
      */
-    public function __construct(FieldModel $fieldModel, TrelloApiService $trelloApiService, Logger $logger)
-    {
-        $this->fieldModel = $fieldModel;
-        $this->apiService = $trelloApiService;
-        $this->logger     = $logger;
+    public function __construct(
+        private FieldModel $fieldModel,
+        private TrelloApiService $apiService,
+        private LoggerInterface $logger
+    ) {
     }
 
     /**

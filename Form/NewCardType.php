@@ -16,6 +16,7 @@ use Mautic\CoreBundle\Form\Type\FormButtonsType;
 use MauticPlugin\MauticTrelloBundle\Openapi\lib\Model\NewCard;
 use MauticPlugin\MauticTrelloBundle\Service\TrelloApiService;
 use Monolog\Logger;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -32,14 +33,14 @@ class NewCardType extends AbstractType
      */
     private $apiService;
     /**
-     * @var Logger
+     * @var LoggerInterface
      */
     protected $logger;
 
     /**
      * Setup NewCard Form.
      */
-    public function __construct(TrelloApiService $trelloApiService, Logger $logger)
+    public function __construct(TrelloApiService $trelloApiService, LoggerInterface $logger)
     {
         $this->apiService = $trelloApiService;
         $this->logger     = $logger;
