@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MauticPlugin\MauticTrelloBundle\EventListener;
 
-use Exception;
 use Mautic\ConfigBundle\ConfigEvents;
 use Mautic\ConfigBundle\Event\ConfigBuilderEvent;
 use Mautic\ConfigBundle\Event\ConfigEvent;
@@ -31,7 +32,7 @@ class ConfigSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * setup the configuration for Trello.
+     * Set up the configuration for Trello.
      */
     public function onConfigGenerate(ConfigBuilderEvent $event): bool
     {
@@ -42,7 +43,6 @@ class ConfigSubscriber implements EventSubscriberInterface
         $event->addForm(
             [
                 'formAlias'  => 'trello_config', // same as in the View filename
-//                'formTheme'  => 'MauticTrelloBundle:FormTheme\Config',
                 'formTheme'  => '@MauticTrello/FormTheme/Config/_config_trello_config_widget.html.twig',
                 'formType'   => ConfigType::class,
                 'parameters' => $event->getParametersFromConfig('MauticTrelloBundle'),
@@ -53,15 +53,10 @@ class ConfigSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * Prepare values before conig is saved to file.
-     *
-     * @return void
+     * Prepare values before config is saved to file.
      */
-    public function onConfigSave(ConfigEvent $event)
+    public function onConfigSave(ConfigEvent $event): void
     {
-        /**
-         * @var array $values
-         */
         $config = $event->getConfig('trello_config');
 
         // Set updated values

@@ -12,12 +12,12 @@ return [
         'main' => [
             'plugin_create_cards_show_new' => [
                 'path'       => '/trello/card/show-new/{contactId}',
-                'controller' => 'MauticTrelloBundle:Card:showNewCard',
+                'controller' => 'MauticPlugin\MauticTrelloBundle\Controller\CardController::showNewCardAction',
             ],
             'plugin_trello_card_add' => [
                 'path'        => '/trello/card',
                 'method'      => 'POST',
-                'controller'  => 'MauticTrelloBundle:Card:add',
+                'controller' => 'MauticPlugin\MauticTrelloBundle\Controller\CardController::addAction',
                 'returnRoute' => '',
             ],
         ],

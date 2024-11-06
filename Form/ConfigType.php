@@ -1,36 +1,21 @@
 <?php
 
-/**
- * @author    Aivie
- * @copyright 2022 Aivie. All rights reserved
- *
- * @see https://aivie.ch
- *
- * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
- */
+declare(strict_types=1);
 
 namespace MauticPlugin\MauticTrelloBundle\Form;
 
-use Mautic\LeadBundle\Model\FieldModel;
 use MauticPlugin\MauticTrelloBundle\Service\TrelloApiService;
-use Psr\Log\LoggerInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * Configure Trello integration in main Mautic Configiguration.
+ * Configure Trello integration in main Mautic Configuration.
  */
 class ConfigType extends AbstractType
 {
-    /**
-     * ConfigType constructor.
-     */
-    public function __construct(
-        private FieldModel $fieldModel,
-        private TrelloApiService $apiService,
-        private LoggerInterface $logger
-    ) {
+    public function __construct(private TrelloApiService $apiService)
+    {
     }
 
     /**
@@ -38,8 +23,6 @@ class ConfigType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $this->fieldModel->getFieldList(false, false);
-
         $builder->add(
             'favorite_board',
             ChoiceType::class,
@@ -52,10 +35,7 @@ class ConfigType extends AbstractType
         );
     }
 
-    /**
-     * @return string
-     */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'trello_config';
     }
@@ -65,8 +45,6 @@ class ConfigType extends AbstractType
      */
     protected function getBoards(): array
     {
-        $boards = array_flip($this->apiService->getBoardsArray());
-
-        return null !== $boards ? $boards : [];
+        return array_flip($this->apiService->getBoardsArray());
     }
 }

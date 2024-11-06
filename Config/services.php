@@ -12,9 +12,7 @@ return static function (ContainerConfigurator $configurator) {
         ->autoconfigure()
         ->public();
 
-    $excludes = [
-        'Controller'
-    ];
+    $excludes = [];
     $services->load('MauticPlugin\\MauticTrelloBundle\\', '../')
         ->exclude('../{'.implode(',', array_merge(MauticCoreExtension::DEFAULT_EXCLUDES, $excludes)).'}');
 
