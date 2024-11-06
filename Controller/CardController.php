@@ -35,6 +35,9 @@ class CardController extends AbstractFormController
 {
     use LeadAccessTrait;
 
+    /**
+     * @phpstan-ignore-next-line
+     */
     public function __construct(
         private LoggerInterface $logger,
         private TrelloApiService $apiService,
@@ -154,7 +157,7 @@ class CardController extends AbstractFormController
         if ('mautic_contact_index' === $returnRoute) {
             $func           = 'index';
             $viewParameters = [
-                'page'         => $this->get('session')->get('mautic.lead.page', 1),
+                'page'         => $this->container->get('session')->get('mautic.lead.page', 1),
                 'objectId'     => $contactId,
             ];
         } else {

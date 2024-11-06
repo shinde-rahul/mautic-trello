@@ -1,23 +1,11 @@
 <?php
 
-/**
- * @copyright 2022 Aivie. All rights reserved
- * @author    Aivie
- *
- * @see https://aivie.ch
- *
- * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
- */
-
 declare(strict_types=1);
 
-namespace MauticPlugin\MauticTrelloBundle\Tests\Service;
+namespace MauticPlugin\MauticTrelloBundle\Tests\Unit\Service;
 
-use GuzzleHttp\Client as HttpClient;
 use Mautic\CoreBundle\Helper\CoreParametersHelper;
 use Mautic\PluginBundle\Helper\IntegrationHelper;
-use MauticPlugin\MauticTrelloBundle\Openapi\lib\Api\DefaultApi;
-use MauticPlugin\MauticTrelloBundle\Openapi\lib\Configuration;
 use MauticPlugin\MauticTrelloBundle\Openapi\lib\Model\Card;
 use MauticPlugin\MauticTrelloBundle\Openapi\lib\Model\TrelloList;
 use MauticPlugin\MauticTrelloBundle\Service\TrelloApiService;
@@ -48,6 +36,9 @@ class TrelloApiServiceMockTest extends TestCase
     {
         parent::setUp();
 
+        /**
+         * @phpstan-ignore-next-line
+         */
         $this->apiService = $this->getMockBuilder(TrelloApiService::class)
             ->setMethods(['getApi', 'getFavouriteBoard', 'getListsOnBoard'])
             ->setConstructorArgs(
