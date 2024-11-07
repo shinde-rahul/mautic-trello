@@ -15,5 +15,4 @@ return static function (ContainerConfigurator $configurator) {
     $excludes = [];
     $services->load('MauticPlugin\\MauticTrelloBundle\\', '../')
         ->exclude('../{'.implode(',', array_merge(MauticCoreExtension::DEFAULT_EXCLUDES, $excludes)).'}');
-
 };

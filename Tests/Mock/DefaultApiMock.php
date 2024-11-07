@@ -1,14 +1,6 @@
 <?php
 
 declare(strict_types=1);
-/**
- * @author    Aivie
- * @copyright 2022 Aivie. All rights reserved
- *
- * @see https://aivie.ch
- *
- * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
- */
 
 namespace MauticPlugin\MauticTrelloBundle\Tests\Mock;
 

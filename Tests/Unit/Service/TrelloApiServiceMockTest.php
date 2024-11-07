@@ -43,9 +43,9 @@ class TrelloApiServiceMockTest extends TestCase
             ->setMethods(['getApi', 'getFavouriteBoard', 'getListsOnBoard'])
             ->setConstructorArgs(
                 [
-                $this->createMock(IntegrationHelper::class),
-                $this->createMock(CoreParametersHelper::class),
-                $this->createMock(Logger::class),
+                    $this->createMock(IntegrationHelper::class),
+                    $this->createMock(CoreParametersHelper::class),
+                    $this->createMock(Logger::class),
                 ]
             )
             ->getMock();

@@ -18,10 +18,10 @@ class ConfigAuthType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $apiToken   = null;
+        $apiToken       = null;
         $configProvider = $options['integration'];
         if ($configProvider->getIntegrationConfiguration() && $configProvider->getIntegrationConfiguration()->getApiKeys()) {
-            $data         = $configProvider->getIntegrationConfiguration()->getApiKeys();
+            $data     = $configProvider->getIntegrationConfiguration()->getApiKeys();
             $apiToken = $data['apitoken'] ?? null;
         }
 

@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 use MauticPlugin\MauticTrelloBundle\Integration\Support\ConfigSupport;
 use MauticPlugin\MauticTrelloBundle\Integration\TrelloIntegration;
 
@@ -17,7 +18,7 @@ return [
             'plugin_trello_card_add' => [
                 'path'        => '/trello/card',
                 'method'      => 'POST',
-                'controller' => 'MauticPlugin\MauticTrelloBundle\Controller\CardController::addAction',
+                'controller'  => 'MauticPlugin\MauticTrelloBundle\Controller\CardController::addAction',
                 'returnRoute' => '',
             ],
         ],

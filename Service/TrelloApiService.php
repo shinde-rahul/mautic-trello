@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace MauticPlugin\MauticTrelloBundle\Service;
 
-use Exception;
 use GuzzleHttp\Client as HttpClient;
-use InvalidArgumentException;
 use Mautic\CoreBundle\Helper\CoreParametersHelper;
 use MauticPlugin\MauticTrelloBundle\Integration\Config;
 use MauticPlugin\MauticTrelloBundle\Openapi\lib\Api\DefaultApi;
@@ -106,7 +104,7 @@ class TrelloApiService
             $this->logger->warning('API Exception when calling DefaultApi->getLists(): ', [$e->getMessage()]);
 
             return [];
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             $this->logger->warning('Exception when calling DefaultApi->getLists(): ', [$e->getMessage()]);
 
             return [];
@@ -137,11 +135,9 @@ class TrelloApiService
     }
 
     /**
-     * * All the business logic for a submitted form.
-     *
-     * @return Card|Exception|CardError
+     * All the business logic for a submitted form.
      */
-    public function addNewCard(array $card)
+    public function addNewCard(array $card): Card|\Exception|CardError
     {
         $api = $this->getApi();
         if (!$api) {
@@ -155,14 +151,14 @@ class TrelloApiService
             }
 
             return $card;
-        } catch (InvalidArgumentException $e) {
+        } catch (\InvalidArgumentException $e) {
             $this->logger->warning($e->getMessage(), $e->getTrace());
 
-            return new Exception('InvalidArgument: '.$e->getMessage());
-        } catch (Exception $e) {
+            return new \Exception('InvalidArgument: '.$e->getMessage());
+        } catch (\Exception $e) {
             $this->logger->error($e->getMessage(), $e->getTrace());
 
-            return new Exception($e->getMessage());
+            return new \Exception($e->getMessage());
         }
 
         // return $this->redirectToRoute('task_success');

@@ -197,15 +197,13 @@ class CardController extends AbstractFormController
 
     /**
      * Build the form.
-     *
-     * @param int|null $contactId
      */
     protected function getForm(Request $request, int $contactId = null): ?FormInterface
     {
         $returnRoute = $request->get('returnRoute');
         if (empty($returnRoute)) {
             $this->logger->warning('Trello: No return route for add to Trello specified', ['contactId' => $contactId]);
-            $returnRoute = "mautic_contact_action"; //somehow the returnRoute can be empty, so set it to the contact detail by default
+            $returnRoute = 'mautic_contact_action'; // somehow the returnRoute can be empty, so set it to the contact detail by default
         }
         $card = new NewCard();
 
