@@ -4,19 +4,15 @@
   "authors": [
     {
       "name": "Adrian Schimpf",
-      "email": "adrian@idea2.ch",
-      "homepage": "https://www.idea2.ch/"
-    },
-    {
-      "name": "Rahul Shinde",
-      "email": "shinde.r.a@gmail.com",
-      "homepage": "https://rahulshinde.name/"
+      "email": "adrian@idea2.ch"
     }
   ],
   "keywords": ["mautic", "plugin", "integration", "aivie"],
   "extra": {
     "install-directory-name": "MauticTrelloBundle"
   },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "require": {
     "mautic/core-lib": "^5.0"
   },
