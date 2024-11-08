@@ -115,7 +115,7 @@ class CardController extends AbstractFormController
         if (!$newCard->valid()) {
             $invalid = current($newCard->listInvalidProperties());
             $message = sprintf($this->translator->trans('mautic.trello.card_data_not_valid'), $invalid);
-            $this->addFlash($message, [], 'error');
+            $this->addFlash(FlashBag::LEVEL_ERROR, $message);
 
             return new JsonResponse(['error' => $message]);
         }
@@ -130,14 +130,14 @@ class CardController extends AbstractFormController
         if ($card instanceof Card) {
             // successfully added
             $this->addFlash(
-                'plugin.trello.card_added',
-                ['%url%' => $card->getUrl(), '%title%' => $card->getName()]
+                FlashBag::LEVEL_NOTICE,
+                $this->translator->trans('plugin.trello.card_added', ['%url%' => $card->getUrl(), '%title%' => $card->getName()], 'flashes'),
             );
         } else {
             // not successfully added
             $this->addFlash(
-                'plugin.trello.card_not_added',
-                ['not-added']
+                FlashBag::LEVEL_ERROR,
+                $this->translator->trans('plugin.trello.card_not_added', [], 'flashes')
             );
         }
 
@@ -173,7 +173,7 @@ class CardController extends AbstractFormController
             [
                 'returnUrl'       => $this->generateUrl($returnRoute, $viewParameters),
                 'viewParameters'  => $viewParameters,
-                'contentTemplate' => 'MauticLeadBundle:Lead:'.$func,
+                'contentTemplate' => 'Mautic\LeadBundle\Controller\LeadController::'.$func.'Action',
                 'passthroughVars' => [
                     'mauticContent' => 'lead',
                     'closeModal'    => 1,
